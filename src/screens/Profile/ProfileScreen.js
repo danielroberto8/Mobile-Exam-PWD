@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Button from "../../components/Button/Button";
 import Colors from "../../../assets/constants/Colors";
 import AsyncStorage from "@react-native-community/async-storage";
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
 });
 
 export default () => {
+  const dispatch = useDispatch();
   const userSelector = useSelector((state) => state.user);
 
   const logoutHandler = () => {

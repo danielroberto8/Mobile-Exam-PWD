@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import {
   StyleSheet,
-  Text,
   View,
-  TouchableOpacity,
-  ImageBackground,
   TextInput,
   Keyboard,
   TouchableWithoutFeedback,
@@ -12,9 +9,10 @@ import {
 } from "react-native";
 import Button from "../../components/Button/Button";
 import TextUI from "../../components/Text/TextUI";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import AsyncStorage from "@react-native-community/async-storage";
 import Colors from "../../../assets/constants/Colors";
+import { H1 } from "native-base";
 
 const styles = StyleSheet.create({
   container: {
@@ -68,8 +66,16 @@ export default (props) => {
         style={{ justifyContent: "center", flex: 1 }}
       >
         <View style={{ ...styles.contentContainer }}>
+          <TextUI style={{ color: Colors.primaryColor }}>
+            {userSelector.username}
+          </TextUI>
           <TextUI style={{ ...styles.welcomeText }}>Tomato Apps</TextUI>
-          <TextUI style={{ ...styles.loginText }}>Login to your account</TextUI>
+          <TextUI style={{ ...styles.loginText }}>
+            Loginnya bisa tapi harus direfresh dulu abis klik :(
+          </TextUI>
+          <H1 style={{ color: Colors.primaryColor }}>
+            {userSelector.username}
+          </H1>
           <View
             style={{
               borderRadius: 22,
@@ -100,12 +106,8 @@ export default (props) => {
               onChangeText={(text) => setUsername(text)}
             />
           </View>
-          <Button
-            onPress={loginBtnHandler}
-            containerStyle={{ marginTop: 40 }}
-            size="lg"
-          >
-            Masuk
+          <Button size="lg" onPress={loginBtnHandler}>
+            LOGIN
           </Button>
         </View>
       </KeyboardAvoidingView>
